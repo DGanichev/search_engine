@@ -1,0 +1,29 @@
+.list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
+}
+
+.list-item .remove-btn {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.list-item .remove-btn:hover {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.list-item .title {
+    cursor: pointer;
+}
+
+.list-item .title.memorized {
+    color: #c58af9;
+}
+
+.list-item .title:hover {
+    font-weight: bold;
+}

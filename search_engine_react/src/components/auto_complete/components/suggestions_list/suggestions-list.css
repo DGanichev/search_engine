@@ -1,0 +1,23 @@
+.suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-right: 2px solid darkgray;
+    border-left: 2px solid darkgray;
+    border-bottom: 2px solid darkgray;
+    list-style-type: none;
+    width: 500px;
+    position: absolute;
+    top: 51px;
+    padding: 0.5rem;
+    background-color: #F8F8FF;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    margin: 0;
+    left: 0;
+}
+
+.no-results-placeholder {
+    width: 100%;
+    text-align: center;
+}
