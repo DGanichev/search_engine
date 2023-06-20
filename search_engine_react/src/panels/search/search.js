@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {AutoComplete, InfoBox, List, Pagination} from "../../components";
+import {AutoComplete, InfoBox, List} from "../../components";
 import {useSearchParams} from "react-router-dom";
 import moment from "moment";
+import {Pagination} from "@mui/material";
 
 import "./search.css";
 
 const TAKE = 10;
 const SKIP = 0;
 const DEFAULT_PAGE = 1;
+const ITEMS_PER_PAGE = 10;
 
 const Search = () => {
     const [result, setResult] = useState(null);
@@ -41,7 +43,7 @@ const Search = () => {
         }
     }
 
-    const handlePageChange = (page) => {
+    const handlePageChange = (_, page) => {
         setSearchParams({search: search, page: page});
     }
 
@@ -55,10 +57,11 @@ const Search = () => {
 
     const displayResultList = () => {
         const {data: {results, metadata}, elapsedTime} = result;
+        const count = Math.ceil(metadata.total / ITEMS_PER_PAGE);
         return <>
             <InfoBox message={`About ${metadata.total} results (${elapsedTime} seconds)`}/>
             <List data={results}/>
-            <Pagination currentPage={page} total={metadata.total} itemsPerPage={TAKE} onPageChange={handlePageChange}/>
+            <Pagination count={count} size={"large"} page={page} onChange={handlePageChange}/>
         </>;
     }
 
