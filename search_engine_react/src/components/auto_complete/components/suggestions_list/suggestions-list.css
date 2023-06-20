@@ -17,7 +17,7 @@
     left: 0;
 }
 
-.no-results-placeholder {
+.suggestions-list .no-results-placeholder {
     width: 100%;
     text-align: center;
 }

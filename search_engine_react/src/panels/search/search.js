@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {AutoComplete, InfoBox, List, Pagination} from "../../components";
 import {useSearchParams} from "react-router-dom";
 import moment from "moment";
@@ -45,20 +45,20 @@ const Search = () => {
         setSearchParams({search: search, page: page});
     }
 
-    const handleSubmit = useCallback((value) => {
+    const handleSubmit = (value) => {
         if (value) {
             setSearchParams({search: value, page: DEFAULT_PAGE});
         }
-    }, []);
+    };
 
-    const loadSuggestions = useCallback(async (search) => getData(search, SKIP, TAKE), []);
+    const loadSuggestions = async (search) => getData(search, SKIP, TAKE);
 
     const displayResultList = () => {
         const {data: {results, metadata}, elapsedTime} = result;
         return <>
             <InfoBox message={`About ${metadata.total} results (${elapsedTime} seconds)`}/>
             <List data={results}/>
-            <Pagination currentPage={page} total={metadata.total} itemsPerPage={TAKE} onPageClick={handlePageChange}/>
+            <Pagination currentPage={page} total={metadata.total} itemsPerPage={TAKE} onPageChange={handlePageChange}/>
         </>;
     }
 

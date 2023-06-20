@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import SuggestionsListItem from "../suggestions_list_item/suggestions-list-item";
 

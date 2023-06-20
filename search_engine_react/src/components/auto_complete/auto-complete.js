@@ -1,9 +1,9 @@
-import React, {useCallback, useRef, useState} from "react";
-import _ from "lodash";
+import React, {useRef, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import SuggestionsList from "./components/suggestions_list/suggestions-list";
+import _ from "lodash";
 
 import "./auto-complete.css";
 
@@ -71,23 +71,23 @@ const AutoComplete = ({autoFocus, onSubmit, loadSuggestions}) => {
         }
     }
 
-    const handleOnItemClick = useCallback((value) => {
+    const handleOnItemClick = (value) => {
         inputRef.current.value = value;
         handleOnInputBlur();
         pushItemToHistory(value);
         onSubmit(value);
-    }, []);
+    };
 
-    const handleOnItemRemoveFromHistory = useCallback((value) => {
+    const handleOnItemRemoveFromHistory = (value) => {
         const success = history.delete(value);
         if (success) {
             const newSet = new Set(Array.from(history));
             setHistory(newSet);
         }
-    }, []);
+    };
 
     return <div className={"autocomplete-container"}>
-        <div className={`search-field ${expanded && 'expanded-search-field'}`}>
+        <div className={`search-field ${expanded && 'expanded'}`}>
             <FontAwesomeIcon icon={faSearch}/>
             <input
                 ref={inputRef}
@@ -113,13 +113,13 @@ const AutoComplete = ({autoFocus, onSubmit, loadSuggestions}) => {
 }
 
 AutoComplete.propTypes = {
-    autoComplete: PropTypes.bool,
+    autoFocus: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
     loadSuggestions: PropTypes.func.isRequired
 }
 
 AutoComplete.defaultProps = {
-    autoComplete: false,
+    autoFocus: false,
 }
 
 export default AutoComplete;

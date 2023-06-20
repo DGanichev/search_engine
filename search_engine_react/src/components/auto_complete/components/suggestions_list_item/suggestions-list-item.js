@@ -18,13 +18,13 @@ const SuggestionsListItem = ({title, memorized, onClick, onRemove}) => {
     }
 
     if (memorized) {
-        return <li className={"list-item"}>
+        return <li className={"suggestions-list-item"}>
             <FontAwesomeIcon icon={faClock}/>
             <span className={"title memorized"} onMouseDown={handleOnTitleMouseDown}>{title}</span>
             <span className={"remove-btn"} onMouseDown={handleOnRemoveMouseDown}>Delete</span>
         </li>
     }
-    return <li className={"list-item"}>
+    return <li className={"suggestions-list-item"}>
         <span className={"title"} onMouseDown={handleOnTitleMouseDown}>{title}</span>
     </li>;
 }

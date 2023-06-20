@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./list.css";
 
 const List = ({data}) => {
-    
+
     const items = data.map(item => <li className={"item"} key={item.id}>
             <p className={"title"}>
                 <a target={"_blank"} href={`https://www.google.com/search?q=${item.title}`}>

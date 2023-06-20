@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import "./pagination.css";
 
-const Pagination = ({currentPage, total, itemsPerPage, onPageClick}) => {
+const Pagination = ({currentPage, total, itemsPerPage, onPageChange}) => {
     const handlePageSelection = (page) => {
-        onPageClick(page + 1);
+        onPageChange(page + 1);
     }
 
     const pagesCount = Math.ceil(total / itemsPerPage);
@@ -27,9 +27,10 @@ const Pagination = ({currentPage, total, itemsPerPage, onPageClick}) => {
 }
 
 Pagination.propTypes = {
+    currentPage: PropTypes.number.isRequired,
     total: PropTypes.number.isRequired,
     itemsPerPage: PropTypes.number.isRequired,
-    onPageClick: PropTypes.func.isRequired
+    onPageChange: PropTypes.func.isRequired
 }
 
 export default Pagination;
